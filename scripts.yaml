@@ -1,0 +1,10 @@
+'1537711898429':
+  alias: Test
+  sequence:
+  alias: ''
+  service: light.turn_on
+  data:
+    entity_id : light.orb
+    brightness: 144
+    rbg_color: 72,251,31
+    message: 'Turned on the Orb light!'

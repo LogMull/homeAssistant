@@ -54,10 +54,6 @@ map:
 # Track the sun
 sun:
 
-# Weather prediction
-sensor:
-  - platform: yr
-
 # Text to speech
 tts:
   - platform: google
@@ -72,4 +68,11 @@ script: !include scripts.yaml
 zwave:
   usb_path: /dev/zwave
 
+mqtt:
+  broker: 192.168.1.18
+  username: logan
+  password: lakD3c@#
+
 logger:
+
+sensor: !include sensors.yaml

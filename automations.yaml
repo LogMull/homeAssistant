@@ -1,1 +1,23 @@
-[]
+  - alias : 'Test Automation'
+    trigger:
+      platform: state
+      entity_id: sensor.esp
+    # Optional
+      to: 'Empty'
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.orb
+        brightness: 50
+        rgb_color: [255, 0, 0]
+
+  - alias : 'Test Automation2'
+    trigger:
+      platform: state
+      entity_id: sensor.esp
+    # Optional
+      to: 'Okay'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.orb

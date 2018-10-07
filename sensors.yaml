@@ -1,0 +1,19 @@
+  - platform: mqtt
+    name: "Temperature"
+    state_topic: "office/sensor1"
+    unit_of_measurement: '°C'
+    value_template: "{{ value_json.temperature }}"
+  
+  - platform: mqtt
+    name: "Humidity"
+    state_topic: "office/sensor1"
+    unit_of_measurement: '%'
+    value_template: "{{ value_json.humidity }}"
+
+  - platform: mqtt
+    name: "ESP"
+    state_topic: "esp/test/esp1"
+    unit_of_measurement: 'units'
+    value_template: "{{ value_json.test }}"
+  
+  - platform: yr

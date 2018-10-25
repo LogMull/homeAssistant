@@ -21,3 +21,15 @@
       service: light.turn_off
       data:
         entity_id : light.orb
+
+  - alias: "Update Water Sensor"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.cat_water
+    action:
+      - service: mqtt.publish
+        data_template:
+          topic: "interior/indicatorBoard/led/0"
+          payload: '{"state":{{ trigger.to_state.state }}}'

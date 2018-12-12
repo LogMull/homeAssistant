@@ -38,6 +38,10 @@ updater:
 # Allows you to issue voice commands from the frontend in enabled browsers
 conversation:
 
+nest:
+  client_id: 4e915c62-d8cd-408f-915b-1b7589c92620
+  client_secret: W2IHEdDCTS3SirwwbxFkTJlTB
+
 # Enables support for tracking state changes over time
 history:
 
@@ -70,18 +74,27 @@ mqtt:
   password: lakD3c@#
 
 logger:
-
+  default: warning
+  logs:
+    homeassistant.components.mqtt: debug
 sensor: !include sensors.yaml
 
 light:
   - platform: mqtt_json
     name: "Cat Water"
-    command_topic: "interior/indicatorBoard/led/0"
-    state_topic: "sensors/indoor/catWater"
+    command_topic: "interior/indicatorBoard/led/0/command"
+    state_topic: "interior/indicatorBoard/led/0/state"
     optimistic: false
+    hidden: true
 
 binary_sensor:
   - platform: mqtt
     name: "Cat Water"
     state_topic: "sensors/indoor/catWater"
     value_template: '{{ value_json.state }}'
+    device_class: moisture
+    # swap the payloads... for reasons
+    #payload_on: "OFF"
+    #payload_off: "ON"
+
+switch: !include switches.yaml

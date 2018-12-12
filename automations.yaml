@@ -29,7 +29,12 @@
       - platform: state
         entity_id: binary_sensor.cat_water
     action:
-      - service: mqtt.publish
-        data_template:
-          topic: "interior/indicatorBoard/led/0"
-          payload: '{"state":{{ trigger.to_state.state }}}'
+      - entity_id: light.cat_water
+        service_template: >
+          {% if is_state('binary_sensor.cat_water', 'on') %}
+            light.turn_off
+          {% else %}
+            light.turn_on
+          {% endif %}
+
+     

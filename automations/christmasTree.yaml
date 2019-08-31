@@ -1,0 +1,48 @@
+
+### SEASONAL ###
+# Morning Christmas Tree On
+  - alias: "Morning Tree On"
+    trigger:
+      platform: time
+      at: '05:55:00'
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.christmas_lights
+# Morning Christmas Tree Off
+  - alias: "Morning Tree Off"
+    trigger:
+      platform: time
+      at: '06:45:00'
+    condition:
+      condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.christmas_lights
+
+# Evening Christmas Tree On
+  - alias: "Evening Tree On"
+    trigger:
+      platform: time
+      at: '15:55:00'
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.christmas_lights
+
+# Evening Christmas Tree Off
+  - alias: "Evening Tree Off"
+    trigger:
+      platform: time
+      at: '22:15:00'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.christmas_lights

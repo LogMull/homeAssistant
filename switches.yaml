@@ -8,7 +8,7 @@
     retain: true
 
   - platform: mqtt
-    name: "Sonoff Switch 02"
+    name: "Modem/Router"
     command_topic: "cmnd/sonoff2/power"
     state_topic: "stat/sonoff2/POWER"
     qos: 1
@@ -17,7 +17,7 @@
     retain: true
 
   - platform: mqtt
-    name: "Sonoff Switch 03"
+    name: "White Noise Machine"
     command_topic: "cmnd/sonoff/power"
     state_topic: "stat/sonoff/POWER"
     qos: 1

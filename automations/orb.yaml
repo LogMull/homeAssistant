@@ -1,0 +1,31 @@
+  # Morning Orb light turn on
+  - alias : "Morning Orb On"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '06:30:00'
+    condition:
+      condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.orb
+
+  # Morning Orb light turn off
+  - alias : "Morning Orb Off"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '08:15:00'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.orb

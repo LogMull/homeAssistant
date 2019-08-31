@@ -14,7 +14,7 @@ homeassistant:
   customize: !include customize.yaml
 
 # Show links to resources in log and frontend
-introduction:
+#introduction:
 
 # Enables the frontend
 frontend:
@@ -59,11 +59,14 @@ tts:
   - platform: google
 
 # Cloud
-cloud:
+# cloud:
 
-group: !include groups.yaml
-automation: !include automations.yaml
+#group: !include groups.yaml
+automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
+sensor: !include sensors.yaml
+light: !include lights.yaml
+switch: !include switches.yaml
 
 zwave:
   usb_path: /dev/zwave
@@ -76,16 +79,9 @@ mqtt:
 logger:
   default: warning
   logs:
+    homeassistant.components.zwave: debug
     homeassistant.components.mqtt: debug
-sensor: !include sensors.yaml
 
-light:
-  - platform: mqtt_json
-    name: "Cat Water"
-    command_topic: "interior/indicatorBoard/led/0/command"
-    state_topic: "interior/indicatorBoard/led/0/state"
-    optimistic: false
-    hidden: true
 
 binary_sensor:
   - platform: mqtt
@@ -93,8 +89,19 @@ binary_sensor:
     state_topic: "sensors/indoor/catWater"
     value_template: '{{ value_json.state }}'
     device_class: moisture
+  - platform: mqtt
+    name: "Mailbox"
+    state_topic: "sensors/outdoor/mailbox"
+    value_template: '{{ value_json.state }}'
+    device_class: presence
     # swap the payloads... for reasons
     #payload_on: "OFF"
     #payload_off: "ON"
-
-switch: !include switches.yaml
+device_tracker:
+  - platform: netgear
+    url: 192.168.1.1
+    username: admin
+    password: 77Shadow77
+    new_device_defaults:
+      track_new_devices: true
+      hide_if_away: false

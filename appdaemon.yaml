@@ -1,0 +1,7 @@
+appdaemon:
+  threads: 10
+  plugins:
+    HASS:
+      type: hass
+      ha_url: http://192.168.1.18:8123
+      token: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIwMGM4ZWQ5NzNkNWQ0YTA3YTZiYzI1MjE4ZmY5NWFjNiIsImlhdCI6MTU2NzE5MDQ0MCwiZXhwIjoxODgyNTUwNDQwfQ.wmvwHAEYEBwUolUqNAgmwKLPArg1vICSWmLkDB3z78E

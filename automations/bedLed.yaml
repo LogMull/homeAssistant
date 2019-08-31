@@ -1,0 +1,132 @@
+# Kristen On - MTTF
+  - alias: "Kristen Morning LED On"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '07:30:00'
+    condition:
+      condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.kristen_bed_led
+
+# Kristen Off - MTTF
+  - alias: "Kristen Morning LED Off"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '08:10:00'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.kristen_bed_led
+
+# Kristen On - MTTF
+  - alias: "Kristen Night LED On"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '21:30:00'
+    condition:
+      condition: time
+      weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.kristen_bed_led
+
+# Kristen Off - MTTF
+  - alias: "Kristen Night LED Off"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '22:00:00'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.kristen_bed_led
+
+
+
+############ LOGAN ###############
+# Logan On - 
+  - alias: "Logan Morning LED On"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '06:10:00'
+    condition:
+      condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.logan_bed_led
+
+# Logan Off - MTWTF
+  - alias: "Logan Morning LED Off"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '07:05:00'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.logan_bed_led
+
+# Logan On - MTWTF
+  - alias: "Logan Night LED On"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '21:15:00'
+    condition:
+      condition: time
+      weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: light.turn_on
+      data:
+        entity_id : light.logan_bed_led
+
+# Logan Off - MTTF
+  - alias: "Logan Night LED Off"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '22:15:00'
+    action:
+      service: light.turn_off
+      data:
+        entity_id : light.logan_bed_led

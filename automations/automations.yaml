@@ -1,0 +1,52 @@
+  # Cat Water sensor update
+  - alias: "Update Water Sensor"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.cat_water
+    action:
+      - entity_id: light.cat_water
+        service_template: >
+          {% if is_state('binary_sensor.cat_water', 'on') %}
+            light.turn_off
+          {% else %}
+            light.turn_on
+          {% endif %}
+
+  - alias: "Update Mailbox Sensor"
+    initial_state: True
+    hide_entity: False
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.mailboxvirt
+    action:
+      - entity_id: light.mailbox
+        service_template: >
+          {% if is_state('binary_sensor.mailboxvirt', 'ON') %}
+            light.turn_on
+          {% else %}
+            light.turn_off
+          {% endif %}
+
+          
+  - alias : "Testing"
+    initial_state: True
+    trigger:
+      platform: numeric_state
+      entity_id: sensor.washerSensor
+      # At least one of the following required
+      above: 9
+    action:
+    - event: uhhh
+      event_data_template:
+        payload: '{{ trigger.entity_id }}'     
+
+  - alias: rf433data
+    trigger:
+      platform: mqtt
+      topic: tele/rfbridge/RESULT
+    action:
+      event: RF433_DATA
+      event_data_template:
+        payload: '{{ trigger.payload }}'        

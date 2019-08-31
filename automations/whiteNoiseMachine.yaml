@@ -1,0 +1,46 @@
+  # Night On
+  - alias : "Night Noise Machine On"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '21:45:00'
+    action:
+      service: switch.turn_on
+      data:
+        entity_id : switch.white_noise_machine
+  # M-F Off
+  - alias : "Noise Machine Off M-F"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '08:15:00'
+    condition:
+      condition: time
+      weekday:
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+    action:
+      service: switch.turn_off
+      data:
+        entity_id : switch.white_noise_machine
+  # M-F Off
+  - alias : "Noise Machine Off Weekend"
+    hide_entity: true
+    initial_state: true
+    trigger:
+      platform: time
+      at: '09:00:00'
+    condition:
+      condition: time
+      weekday:
+      - sat
+      - sun
+    action:
+      service: switch.turn_off
+      data:
+        entity_id : switch.white_noise_machine

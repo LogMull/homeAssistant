@@ -1,0 +1,39 @@
+  - platform: mqtt
+    name: "Cat Water"
+    schema: "json"
+    command_topic: "interior/indicatorBoard/led/0/command"
+    state_topic: "interior/indicatorBoard/led/0/state"
+    optimistic: false
+    hidden: true
+
+  - platform: mqtt
+    name: "mailbox"
+    schema: "json"
+    command_topic: "interior/indicatorBoard/led/1/command"
+    state_topic: "interior/indicatorBoard/led/1/state"
+    optimistic: false
+    hidden: false
+
+  - platform: switch
+    name: Christmas Lights
+    entity_id: switch.christmas_lights
+
+  - platform: switch
+    name: Laundry Room
+    entity_id: switch.laundry_room_lights
+    
+  - platform: mqtt
+    name: "Logan Bed Led"
+    schema: "json"
+    command_topic: "interior/bedroom/led/0/command"
+    state_topic: "interior/bedroom/led/0/state"
+    optimistic: false
+    retain: true
+
+  - platform: mqtt
+    name: "Kristen Bed Led"
+    schema: "json"
+    command_topic: "interior/bedroom/led/1/command"
+    state_topic: "interior/bedroom/led/1/state"
+    optimistic: false
+    retain: true
